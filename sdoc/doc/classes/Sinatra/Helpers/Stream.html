@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Sinatra::Helpers::Stream</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Sinatra::Helpers::Stream 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/test/sinatra/base_rb.html">test/sinatra/base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Class of the response body in case you use <a
+href="Stream.html#method-i-stream">stream</a>.</p>
+
+<p>Three things really matter: The front and back block (back being the block
+generating content, front the one sending it to the client) and the
+scheduler, integrating with whatever concurrency feature the <a
+href="../../Rack.html">Rack</a> handler is using.</p>
+
+<p>Scheduler has to respond to defer and schedule.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Stream/Templates.html">Sinatra::Helpers::Stream::Templates</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stream/Application.html">Sinatra::Helpers::Stream::Application</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stream/Base.html">Sinatra::Helpers::Stream::Base</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stream/Wrapper.html">Sinatra::Helpers::Stream::Wrapper</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3C-3C">&lt;&lt;</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-back">back</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cache_control">cache_control</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-callback">callback</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-client_error-3F">client_error?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-close">close</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-closed-3F">closed?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-defer">defer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-etag">etag</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-etag_matches-3F">etag_matches?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-expires">expires</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-informational-3F">informational?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-last_modified">last_modified</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-not_found-3F">not_found?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-redirect-3F">redirect?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-schedule">schedule</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-server_error-3F">server_error?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-stream">stream</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-success-3F">success?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-time_for">time_for</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-with_params">with_params</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-defer">
+            
+              <b>defer</b>(*)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-c-defer" name="method-c-defer" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-defer_source')" id="l_method-c-defer_source">show</a>
+                
+              </p>
+              <div id="method-c-defer_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 379</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">defer</span>(*)    <span class="ruby-keyword">yield</span> <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">scheduler</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">keep_open</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">back</span>)
+    <span class="ruby-ivar">@back</span>, <span class="ruby-ivar">@scheduler</span>, <span class="ruby-ivar">@keep_open</span> = <span class="ruby-identifier">back</span>.<span class="ruby-identifier">to_proc</span>, <span class="ruby-identifier">scheduler</span>, <span class="ruby-identifier">keep_open</span>
+    <span class="ruby-ivar">@callbacks</span>, <span class="ruby-ivar">@closed</span> = [], <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">close</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+    <span class="ruby-ivar">@closed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@callbacks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">call</span> }}
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each</span>(&amp;<span class="ruby-identifier">front</span>)
+    <span class="ruby-ivar">@front</span> = <span class="ruby-identifier">front</span>
+    <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">defer</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-ivar">@back</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> }
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">close</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@keep_open</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-keyword ruby-title">data</span>)
+    <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@front</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_s</span>) }
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">callback</span>(&amp;<span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">yield</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+    <span class="ruby-ivar">@callbacks</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">alias</span> <span class="ruby-identifier">errback</span> <span class="ruby-identifier">callback</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">closed?</span>
+    <span class="ruby-ivar">@closed</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(scheduler = self.class, keep_open = false, &amp;back)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 381</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">scheduler</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">keep_open</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">back</span>)
+  <span class="ruby-ivar">@back</span>, <span class="ruby-ivar">@scheduler</span>, <span class="ruby-ivar">@keep_open</span> = <span class="ruby-identifier">back</span>.<span class="ruby-identifier">to_proc</span>, <span class="ruby-identifier">scheduler</span>, <span class="ruby-identifier">keep_open</span>
+  <span class="ruby-ivar">@callbacks</span>, <span class="ruby-ivar">@closed</span> = [], <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-schedule">
+            
+              <b>schedule</b>(*)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-c-schedule" name="method-c-schedule" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-schedule_source')" id="l_method-c-schedule_source">show</a>
+                
+              </p>
+              <div id="method-c-schedule_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 378</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">schedule</span>(*) <span class="ruby-keyword">yield</span> <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">defer</span>(*)    <span class="ruby-keyword">yield</span> <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">scheduler</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>, <span class="ruby-identifier">keep_open</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">back</span>)
+      <span class="ruby-ivar">@back</span>, <span class="ruby-ivar">@scheduler</span>, <span class="ruby-ivar">@keep_open</span> = <span class="ruby-identifier">back</span>.<span class="ruby-identifier">to_proc</span>, <span class="ruby-identifier">scheduler</span>, <span class="ruby-identifier">keep_open</span>
+      <span class="ruby-ivar">@callbacks</span>, <span class="ruby-ivar">@closed</span> = [], <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">close</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+      <span class="ruby-ivar">@closed</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@callbacks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">call</span> }}
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each</span>(&amp;<span class="ruby-identifier">front</span>)
+      <span class="ruby-ivar">@front</span> = <span class="ruby-identifier">front</span>
+      <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">defer</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-keyword">begin</span>
+          <span class="ruby-ivar">@back</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> }
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">close</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@keep_open</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-keyword ruby-title">data</span>)
+      <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@front</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_s</span>) }
+      <span class="ruby-keyword">self</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">callback</span>(&amp;<span class="ruby-identifier">block</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">yield</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+      <span class="ruby-ivar">@callbacks</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">alias</span> <span class="ruby-identifier">errback</span> <span class="ruby-identifier">callback</span>
+
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">closed?</span>
+      <span class="ruby-ivar">@closed</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Allows to start sending data to the client even though later parts of</span>
+  <span class="ruby-comment"># the response body have not yet been generated.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># The close parameter specifies whether Stream#close should be called</span>
+  <span class="ruby-comment"># after the block has been executed. This is only relevant for evented</span>
+  <span class="ruby-comment"># servers like Thin or Rainbows.</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">stream</span>(<span class="ruby-identifier">keep_open</span> = <span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">scheduler</span> = <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;async.callback&#39;</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">EventMachine</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Stream</span>
+    <span class="ruby-identifier">current</span>   = <span class="ruby-ivar">@params</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">body</span> <span class="ruby-constant">Stream</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">scheduler</span>, <span class="ruby-identifier">keep_open</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">out</span><span class="ruby-operator">|</span> <span class="ruby-identifier">with_params</span>(<span class="ruby-identifier">current</span>) { <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">out</span>) } }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Specify response freshness policy for HTTP caches (Cache-Control header).</span>
+  <span class="ruby-comment"># Any number of non-value directives (:public, :private, :no_cache,</span>
+  <span class="ruby-comment"># :no_store, :must_revalidate, :proxy_revalidate) may be passed along with</span>
+  <span class="ruby-comment"># a Hash of value directives (:max_age, :min_stale, :s_max_age).</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#   cache_control :public, :must_revalidate, :max_age =&gt; 60</span>
+  <span class="ruby-comment">#   =&gt; Cache-Control: public, must-revalidate, max-age=60</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># See RFC 2616 / 14.9 for more on standard cache control directives:</span>
+  <span class="ruby-comment"># http://tools.ietf.org/html/rfc2616#section-14.9.1</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cache_control</span>(*<span class="ruby-identifier">values</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">pop</span>
+      <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> }
+      <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">hash</span> = {}
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>,<span class="ruby-string">&#39;-&#39;</span>) }
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39;-&#39;</span>)
+      <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;max-age&quot;</span>
+      <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;=&#39;</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Cache-Control&#39;</span>] = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">any?</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Set the Expires header and Cache-Control/max-age directive. Amount</span>
+  <span class="ruby-comment"># can be an integer number of seconds in the future or a Time object</span>
+  <span class="ruby-comment"># indicating when the response should be considered &quot;stale&quot;. The remaining</span>
+  <span class="ruby-comment"># &quot;values&quot; arguments are passed to the #cache_control helper:</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#   expires 500, :public, :must_revalidate</span>
+  <span class="ruby-comment">#   =&gt; Cache-Control: public, must-revalidate, max-age=60</span>
+  <span class="ruby-comment">#   =&gt; Expires: Mon, 08 Jun 2009 08:50:17 GMT</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">expires</span>(<span class="ruby-identifier">amount</span>, *<span class="ruby-identifier">values</span>)
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> {} <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+      <span class="ruby-identifier">time</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">max_age</span> = <span class="ruby-identifier">amount</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">time</span>    = <span class="ruby-identifier">time_for</span> <span class="ruby-identifier">amount</span>
+      <span class="ruby-identifier">max_age</span> = <span class="ruby-identifier">time</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:max_age</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_age</span>)
+    <span class="ruby-identifier">cache_control</span>(*<span class="ruby-identifier">values</span>)
+
+    <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Expires&#39;</span>] = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">httpdate</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Set the last modified time of the resource (HTTP &#39;Last-Modified&#39; header)</span>
+  <span class="ruby-comment"># and halt if conditional GET matches. The +time+ argument is a Time,</span>
+  <span class="ruby-comment"># DateTime, or other object that responds to +to_time+.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># When the current request includes an &#39;If-Modified-Since&#39; header that is</span>
+  <span class="ruby-comment"># equal or later than the time specified, execution is immediately halted</span>
+  <span class="ruby-comment"># with a &#39;304 Not Modified&#39; response.</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">last_modified</span>(<span class="ruby-identifier">time</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">time</span>
+    <span class="ruby-identifier">time</span> = <span class="ruby-identifier">time_for</span> <span class="ruby-identifier">time</span>
+    <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Last-Modified&#39;</span>] = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">httpdate</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_NONE_MATCH&#39;</span>]
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">200</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MODIFIED_SINCE&#39;</span>]
+      <span class="ruby-comment"># compare based on seconds since epoch</span>
+      <span class="ruby-identifier">since</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">httpdate</span>(<span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MODIFIED_SINCE&#39;</span>]).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">halt</span> <span class="ruby-number">304</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">success?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">412</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_UNMODIFIED_SINCE&#39;</span>]
+      <span class="ruby-comment"># compare based on seconds since epoch</span>
+      <span class="ruby-identifier">since</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">httpdate</span>(<span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_UNMODIFIED_SINCE&#39;</span>]).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">halt</span> <span class="ruby-number">412</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Set the response entity tag (HTTP &#39;ETag&#39; header) and halt if conditional</span>
+  <span class="ruby-comment"># GET matches. The +value+ argument is an identifier that uniquely</span>
+  <span class="ruby-comment"># identifies the current version of the resource. The +kind+ argument</span>
+  <span class="ruby-comment"># indicates whether the etag should be used as a :strong (default) or :weak</span>
+  <span class="ruby-comment"># cache validator.</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># When the current request includes an &#39;If-None-Match&#39; header with a</span>
+  <span class="ruby-comment"># matching etag, execution is immediately halted. If the request method is</span>
+  <span class="ruby-comment"># GET or HEAD, a &#39;304 Not Modified&#39; response is sent.</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">etag</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span> = {})
+    <span class="ruby-comment"># Before touching this code, please double check RFC 2616 14.24 and 14.26.</span>
+    <span class="ruby-identifier">options</span>      = {<span class="ruby-value">:kind</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>} <span class="ruby-keyword">unless</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>
+    <span class="ruby-identifier">kind</span>         = <span class="ruby-identifier">options</span>[<span class="ruby-value">:kind</span>] <span class="ruby-operator">||</span> <span class="ruby-value">:strong</span>
+    <span class="ruby-identifier">new_resource</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:new_resource</span>) { <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span> }
+
+    <span class="ruby-keyword">unless</span> [<span class="ruby-value">:strong</span>, <span class="ruby-value">:weak</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">kind</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;:strong or :weak expected&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">value</span> = <span class="ruby-string">&#39;&quot;%s&quot;&#39;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-string">&#39;W/&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:weak</span>
+    <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;ETag&#39;</span>] = <span class="ruby-identifier">value</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">success?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">304</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">etag_matches?</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_NONE_MATCH&#39;</span>], <span class="ruby-identifier">new_resource</span>
+        <span class="ruby-identifier">halt</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">safe?</span> <span class="ruby-operator">?</span> <span class="ruby-number">304</span> <span class="ruby-operator">:</span> <span class="ruby-number">412</span>)
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MATCH&#39;</span>]
+        <span class="ruby-identifier">halt</span> <span class="ruby-number">412</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">etag_matches?</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MATCH&#39;</span>], <span class="ruby-identifier">new_resource</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Sugar for redirect (example:  redirect back)</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">back</span>
+    <span class="ruby-identifier">request</span>.<span class="ruby-identifier">referer</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 1xx</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">informational?</span>
+    <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">100</span>, <span class="ruby-number">199</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 2xx</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">success?</span>
+    <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">200</span>, <span class="ruby-number">299</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 3xx</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">redirect?</span>
+    <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">300</span>, <span class="ruby-number">399</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 4xx</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">client_error?</span>
+    <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">400</span>, <span class="ruby-number">499</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 5xx</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">server_error?</span>
+    <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">500</span>, <span class="ruby-number">599</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># whether or not the status is set to 404</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">not_found?</span>
+    <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">404</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Generates a Time object from the given value.</span>
+  <span class="ruby-comment"># Used by #expires and #last_modified.</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">time_for</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_time</span>
+      <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_time</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Time</span>
+      <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:new_offset</span>
+      <span class="ruby-comment"># DateTime#to_time does the same on 1.9</span>
+      <span class="ruby-identifier">d</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">new_offset</span> <span class="ruby-number">0</span>
+      <span class="ruby-identifier">t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">mon</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">mday</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">hour</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">min</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">sec</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">sec_fraction</span>
+      <span class="ruby-identifier">t</span>.<span class="ruby-identifier">getlocal</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:mday</span>
+      <span class="ruby-comment"># Date#to_time does the same on 1.9</span>
+      <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">mon</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">mday</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Numeric</span>
+      <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">boom</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">boom</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unable to convert #{value.inspect} to a Time object&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">private</span>
+
+  <span class="ruby-comment"># Helper method checking if a ETag value list includes the current ETag.</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">etag_matches?</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">new_resource</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">new_resource</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">list</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;*&#39;</span>
+    <span class="ruby-identifier">list</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s*,\s*/</span>).<span class="ruby-identifier">include?</span> <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;ETag&#39;</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">with_params</span>(<span class="ruby-identifier">temp_params</span>)
+    <span class="ruby-identifier">original</span>, <span class="ruby-ivar">@params</span> = <span class="ruby-ivar">@params</span>, <span class="ruby-identifier">temp_params</span>
+    <span class="ruby-keyword">yield</span>
+  <span class="ruby-keyword">ensure</span>
+    <span class="ruby-ivar">@params</span> = <span class="ruby-identifier">original</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">original</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3C">
+            
+              <b>&lt;&lt;</b>(data)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-3C-3C" name="method-i-3C-3C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3C_source')" id="l_method-i-3C-3C_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3C_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 404</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-keyword ruby-title">data</span>)
+  <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@front</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_s</span>) }
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-back">
+            
+              <b>back</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-back" name="method-i-back" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sugar for redirect (example:  redirect back)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-back_source')" id="l_method-i-back_source">show</a>
+                
+              </p>
+              <div id="method-i-back_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 550</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">back</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">referer</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cache_control">
+            
+              <b>cache_control</b>(*values)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-cache_control" name="method-i-cache_control" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Specify response freshness policy for HTTP caches (Cache-Control header).
+Any number of non-value directives (:public, :private, :no_cache,
+:no_store, :must_revalidate, :proxy_revalidate) may be passed along with a
+Hash of value directives (:max_age, :min_stale, :s_max_age).</p>
+
+<pre class="ruby"><span class="ruby-identifier">cache_control</span> :<span class="ruby-identifier">public</span>, :<span class="ruby-identifier">must_revalidate</span>, :<span class="ruby-identifier">max_age</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">60</span>
+=<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Cache</span><span class="ruby-operator">-</span><span class="ruby-constant">Control</span><span class="ruby-operator">:</span> <span class="ruby-identifier">public</span>, <span class="ruby-identifier">must</span><span class="ruby-operator">-</span><span class="ruby-identifier">revalidate</span>, <span class="ruby-identifier">max</span><span class="ruby-operator">-</span><span class="ruby-identifier">age</span>=<span class="ruby-value">60</span>
+</pre>
+
+<p>See RFC 2616 / 14.9 for more on standard cache control directives: <a
+href="http://tools.ietf.org/html/rfc2616#section-14.9.1">tools.ietf.org/html/rfc2616#section-14.9.1</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cache_control_source')" id="l_method-i-cache_control_source">show</a>
+                
+              </p>
+              <div id="method-i-cache_control_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 443</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cache_control</span>(*<span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">pop</span>
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> }
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">k</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">hash</span> = {}
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>,<span class="ruby-string">&#39;-&#39;</span>) }
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39;-&#39;</span>)
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;max-age&quot;</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;=&#39;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Cache-Control&#39;</span>] = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">any?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-callback">
+            
+              <b>callback</b>(&amp;block)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-callback" name="method-i-callback" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-callback_source')" id="l_method-i-callback_source">show</a>
+                
+              </p>
+              <div id="method-i-callback_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 409</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">callback</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">yield</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+  <span class="ruby-ivar">@callbacks</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-client_error-3F">
+            
+              <b>client_error?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-client_error-3F" name="method-i-client_error-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 4xx</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-client_error-3F_source')" id="l_method-i-client_error-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-client_error-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 570</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">client_error?</span>
+  <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">400</span>, <span class="ruby-number">499</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-close">
+            
+              <b>close</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-close" name="method-i-close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_source')" id="l_method-i-close_source">show</a>
+                
+              </p>
+              <div id="method-i-close_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 386</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">close</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@closed</span>
+  <span class="ruby-ivar">@closed</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-ivar">@callbacks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">call</span> }}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-closed-3F">
+            
+              <b>closed?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-closed-3F" name="method-i-closed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-closed-3F_source')" id="l_method-i-closed-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-closed-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 416</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">closed?</span>
+  <span class="ruby-ivar">@closed</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>each</b>(&amp;front)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_source')" id="l_method-i-each_source">show</a>
+                
+              </p>
+              <div id="method-i-each_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 392</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each</span>(&amp;<span class="ruby-identifier">front</span>)
+  <span class="ruby-ivar">@front</span> = <span class="ruby-identifier">front</span>
+  <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">defer</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-ivar">@back</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-ivar">@scheduler</span>.<span class="ruby-identifier">schedule</span> { <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> }
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">close</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@keep_open</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-etag">
+            
+              <b>etag</b>(value, options = {})
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-etag" name="method-i-etag" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the response entity tag (HTTP &#39;ETag&#39; header) and halt if
+conditional GET matches. The <code>value</code> argument is an identifier
+that uniquely identifies the current version of the resource. The
+<code>kind</code> argument indicates whether the etag should be used as a
+:strong (default) or :weak cache validator.</p>
+
+<p>When the current request includes an &#39;If-None-Match&#39; header with a
+matching etag, execution is immediately halted. If the request method is
+GET or HEAD, a &#39;304 Not Modified&#39; response is sent.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-etag_source')" id="l_method-i-etag_source">show</a>
+                
+              </p>
+              <div id="method-i-etag_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 524</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">etag</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-comment"># Before touching this code, please double check RFC 2616 14.24 and 14.26.</span>
+  <span class="ruby-identifier">options</span>      = {<span class="ruby-value">:kind</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>} <span class="ruby-keyword">unless</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-identifier">kind</span>         = <span class="ruby-identifier">options</span>[<span class="ruby-value">:kind</span>] <span class="ruby-operator">||</span> <span class="ruby-value">:strong</span>
+  <span class="ruby-identifier">new_resource</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:new_resource</span>) { <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span> }
+
+  <span class="ruby-keyword">unless</span> [<span class="ruby-value">:strong</span>, <span class="ruby-value">:weak</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">kind</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;:strong or :weak expected&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">value</span> = <span class="ruby-string">&#39;&quot;%s&quot;&#39;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-identifier">value</span> = <span class="ruby-string">&#39;W/&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:weak</span>
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;ETag&#39;</span>] = <span class="ruby-identifier">value</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">success?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">304</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">etag_matches?</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_NONE_MATCH&#39;</span>], <span class="ruby-identifier">new_resource</span>
+      <span class="ruby-identifier">halt</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">safe?</span> <span class="ruby-operator">?</span> <span class="ruby-number">304</span> <span class="ruby-operator">:</span> <span class="ruby-number">412</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MATCH&#39;</span>]
+      <span class="ruby-identifier">halt</span> <span class="ruby-number">412</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">etag_matches?</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MATCH&#39;</span>], <span class="ruby-identifier">new_resource</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-etag_matches-3F">
+            
+              <b>etag_matches?</b>(list, new_resource = request.post?)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-etag_matches-3F" name="method-i-etag_matches-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Helper method checking if a ETag value list includes the current ETag.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-etag_matches-3F_source')" id="l_method-i-etag_matches-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-etag_matches-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 613</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">etag_matches?</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">new_resource</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">new_resource</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">list</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;*&#39;</span>
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s*,\s*/</span>).<span class="ruby-identifier">include?</span> <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;ETag&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-expires">
+            
+              <b>expires</b>(amount, *values)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-expires" name="method-i-expires" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the Expires header and Cache-Control/max-age directive. Amount can be
+an integer number of seconds in the future or a Time object indicating when
+the response should be considered “stale”. The remaining “values” arguments
+are passed to the <a
+href="Stream.html#method-i-cache_control">cache_control</a> helper:</p>
+
+<pre>expires 500, :public, :must_revalidate
+=&gt; Cache-Control: public, must-revalidate, max-age=60
+=&gt; Expires: Mon, 08 Jun 2009 08:50:17 GMT
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-expires_source')" id="l_method-i-expires_source">show</a>
+                
+              </p>
+              <div id="method-i-expires_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 471</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">expires</span>(<span class="ruby-identifier">amount</span>, *<span class="ruby-identifier">values</span>)
+  <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> {} <span class="ruby-keyword">unless</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+    <span class="ruby-identifier">time</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">max_age</span> = <span class="ruby-identifier">amount</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">time</span>    = <span class="ruby-identifier">time_for</span> <span class="ruby-identifier">amount</span>
+    <span class="ruby-identifier">max_age</span> = <span class="ruby-identifier">time</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value">:max_age</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_age</span>)
+  <span class="ruby-identifier">cache_control</span>(*<span class="ruby-identifier">values</span>)
+
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Expires&#39;</span>] = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">httpdate</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-informational-3F">
+            
+              <b>informational?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-informational-3F" name="method-i-informational-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 1xx</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-informational-3F_source')" id="l_method-i-informational-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-informational-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 555</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">informational?</span>
+  <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">100</span>, <span class="ruby-number">199</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-last_modified">
+            
+              <b>last_modified</b>(time)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-last_modified" name="method-i-last_modified" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the last modified time of the resource (HTTP &#39;Last-Modified&#39;
+header) and halt if conditional GET matches. The <code>time</code> argument
+is a Time, DateTime, or other object that responds to <code>to_time</code>.</p>
+
+<p>When the current request includes an &#39;If-Modified-Since&#39; header
+that is equal or later than the time specified, execution is immediately
+halted with a &#39;304 Not Modified&#39; response.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-last_modified_source')" id="l_method-i-last_modified_source">show</a>
+                
+              </p>
+              <div id="method-i-last_modified_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 495</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">last_modified</span>(<span class="ruby-identifier">time</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">time</span>
+  <span class="ruby-identifier">time</span> = <span class="ruby-identifier">time_for</span> <span class="ruby-identifier">time</span>
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Last-Modified&#39;</span>] = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">httpdate</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_NONE_MATCH&#39;</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">200</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MODIFIED_SINCE&#39;</span>]
+    <span class="ruby-comment"># compare based on seconds since epoch</span>
+    <span class="ruby-identifier">since</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">httpdate</span>(<span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_MODIFIED_SINCE&#39;</span>]).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">halt</span> <span class="ruby-number">304</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">success?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">412</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_UNMODIFIED_SINCE&#39;</span>]
+    <span class="ruby-comment"># compare based on seconds since epoch</span>
+    <span class="ruby-identifier">since</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">httpdate</span>(<span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_IF_UNMODIFIED_SINCE&#39;</span>]).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">halt</span> <span class="ruby-number">412</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-not_found-3F">
+            
+              <b>not_found?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-not_found-3F" name="method-i-not_found-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 404</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-not_found-3F_source')" id="l_method-i-not_found-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-not_found-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 580</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">not_found?</span>
+  <span class="ruby-identifier">status</span> <span class="ruby-operator">==</span> <span class="ruby-number">404</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-redirect-3F">
+            
+              <b>redirect?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-redirect-3F" name="method-i-redirect-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 3xx</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-redirect-3F_source')" id="l_method-i-redirect-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-redirect-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 565</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">redirect?</span>
+  <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">300</span>, <span class="ruby-number">399</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-server_error-3F">
+            
+              <b>server_error?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-server_error-3F" name="method-i-server_error-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 5xx</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-server_error-3F_source')" id="l_method-i-server_error-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-server_error-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 575</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">server_error?</span>
+  <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">500</span>, <span class="ruby-number">599</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stream">
+            
+              <b>stream</b>(keep_open = false)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-stream" name="method-i-stream" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allows to start sending data to the client even though later parts of the
+response body have not yet been generated.</p>
+
+<p>The close parameter specifies whether <a
+href="Stream.html#method-i-close">#close</a> should be called after the
+block has been executed. This is only relevant for evented servers like
+Thin or Rainbows.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stream_source')" id="l_method-i-stream_source">show</a>
+                
+              </p>
+              <div id="method-i-stream_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 427</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">stream</span>(<span class="ruby-identifier">keep_open</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">scheduler</span> = <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;async.callback&#39;</span>] <span class="ruby-operator">?</span> <span class="ruby-constant">EventMachine</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Stream</span>
+  <span class="ruby-identifier">current</span>   = <span class="ruby-ivar">@params</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">body</span> <span class="ruby-constant">Stream</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">scheduler</span>, <span class="ruby-identifier">keep_open</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">out</span><span class="ruby-operator">|</span> <span class="ruby-identifier">with_params</span>(<span class="ruby-identifier">current</span>) { <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">out</span>) } }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-success-3F">
+            
+              <b>success?</b>()
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-success-3F" name="method-i-success-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>whether or not the status is set to 2xx</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-success-3F_source')" id="l_method-i-success-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-success-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 560</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">success?</span>
+  <span class="ruby-identifier">status</span>.<span class="ruby-identifier">between?</span> <span class="ruby-number">200</span>, <span class="ruby-number">299</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-time_for">
+            
+              <b>time_for</b>(value)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-time_for" name="method-i-time_for" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Generates a Time object from the given value. Used by <a
+href="Stream.html#method-i-expires">expires</a> and <a
+href="Stream.html#method-i-last_modified">last_modified</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-time_for_source')" id="l_method-i-time_for_source">show</a>
+                
+              </p>
+              <div id="method-i-time_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 586</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">time_for</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_time</span>
+    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_time</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Time</span>
+    <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:new_offset</span>
+    <span class="ruby-comment"># DateTime#to_time does the same on 1.9</span>
+    <span class="ruby-identifier">d</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">new_offset</span> <span class="ruby-number">0</span>
+    <span class="ruby-identifier">t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">mon</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">mday</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">hour</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">min</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">sec</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">sec_fraction</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">getlocal</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:mday</span>
+    <span class="ruby-comment"># Date#to_time does the same on 1.9</span>
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">mon</span>, <span class="ruby-identifier">value</span>.<span class="ruby-identifier">mday</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Numeric</span>
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">boom</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-identifier">boom</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unable to convert #{value.inspect} to a Time object&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-with_params">
+            
+              <b>with_params</b>(temp_params)
+            
+            <a href="../../../classes/Sinatra/Helpers/Stream.html#method-i-with_params" name="method-i-with_params" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-with_params_source')" id="l_method-i-with_params_source">show</a>
+                
+              </p>
+              <div id="method-i-with_params_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 618</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">with_params</span>(<span class="ruby-identifier">temp_params</span>)
+  <span class="ruby-identifier">original</span>, <span class="ruby-ivar">@params</span> = <span class="ruby-ivar">@params</span>, <span class="ruby-identifier">temp_params</span>
+  <span class="ruby-keyword">yield</span>
+<span class="ruby-keyword">ensure</span>
+  <span class="ruby-ivar">@params</span> = <span class="ruby-identifier">original</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">original</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

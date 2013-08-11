@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Sinatra::Helpers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Sinatra::Helpers 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/sinatra/base_rb.html">test/sinatra/base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Methods available to routes, before/after filters, and views.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Helpers/Stream.html">Sinatra::Helpers::Stream</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-attachment">attachment</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-body">body</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-content_type">content_type</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-error">error</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-headers">headers</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-logger">logger</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mime_type">mime_type</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-not_found">not_found</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-redirect">redirect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-send_file">send_file</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-session">session</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-status">status</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to">to</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-uri">uri</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-url">url</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-attachment">
+            
+              <b>attachment</b>(filename = nil, disposition = &#39;attachment&#39;)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-attachment" name="method-i-attachment" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the Content-Disposition to “attachment” with the specified filename,
+instructing the user agents to prompt to save.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-attachment_source')" id="l_method-i-attachment_source">show</a>
+                
+              </p>
+              <div id="method-i-attachment_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 335</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">attachment</span>(<span class="ruby-identifier">filename</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">disposition</span> = <span class="ruby-string">&#39;attachment&#39;</span>)
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Disposition&#39;</span>] = <span class="ruby-identifier">disposition</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">filename</span>
+    <span class="ruby-identifier">params</span> = <span class="ruby-string">&#39;; filename=&quot;%s&quot;&#39;</span> <span class="ruby-operator">%</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>)
+    <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Disposition&#39;</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">params</span>
+    <span class="ruby-identifier">ext</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">filename</span>)
+    <span class="ruby-identifier">content_type</span>(<span class="ruby-identifier">ext</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>] <span class="ruby-keyword">or</span> <span class="ruby-identifier">ext</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-body">
+            
+              <b>body</b>(value = nil, &amp;block)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-body" name="method-i-body" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set or retrieve the response body. When a block is given, evaluation is
+deferred until the body is read with each.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-body_source')" id="l_method-i-body_source">show</a>
+                
+              </p>
+              <div id="method-i-body_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 231</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">body</span>(<span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">block</span>.<span class="ruby-identifier">each</span>; <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">call</span>) <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">block</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-identifier">headers</span>.<span class="ruby-identifier">delete</span> <span class="ruby-string">&#39;Content-Length&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">head?</span>
+    <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-content_type">
+            
+              <b>content_type</b>(type = nil, params = {})
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-content_type" name="method-i-content_type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the Content-Type of the response body given a media type or file
+extension.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-content_type_source')" id="l_method-i-content_type_source">show</a>
+                
+              </p>
+              <div id="method-i-content_type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 313</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">content_type</span>(<span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">params</span> = {})
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">type</span>
+  <span class="ruby-identifier">default</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:default</span>
+  <span class="ruby-identifier">mime_type</span> = <span class="ruby-identifier">mime_type</span>(<span class="ruby-identifier">type</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>
+  <span class="ruby-identifier">fail</span> <span class="ruby-string">&quot;Unknown media type: %p&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">type</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">mime_type</span> = <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">include?</span> <span class="ruby-value">:charset</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">add_charset</span>.<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">mime_type</span> }
+    <span class="ruby-identifier">params</span>[<span class="ruby-value">:charset</span>] = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;charset&#39;</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">default_encoding</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:charset</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&#39;charset&#39;</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">mime_type</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;;&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-string">&#39;, &#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;;&#39;</span>)
+    <span class="ruby-identifier">mime_type</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/[&quot;;,]/</span>
+      <span class="ruby-node">&quot;#{key}=#{val}&quot;</span>
+    <span class="ruby-keyword">end</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>] = <span class="ruby-identifier">mime_type</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-error">
+            
+              <b>error</b>(code, body = nil)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-error" name="method-i-error" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Halt processing and return the error status provided.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-error_source')" id="l_method-i-error_source">show</a>
+                
+              </p>
+              <div id="method-i-error_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 279</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">error</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">code</span>, <span class="ruby-identifier">body</span>    = <span class="ruby-number">500</span>, <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_str</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">body</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">halt</span> <span class="ruby-identifier">code</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-headers">
+            
+              <b>headers</b>(hash = nil)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-headers" name="method-i-headers" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set multiple response headers with Hash.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-headers_source')" id="l_method-i-headers_source">show</a>
+                
+              </p>
+              <div id="method-i-headers_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 291</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">headers</span>(<span class="ruby-identifier">hash</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">hash</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">hash</span>
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">headers</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-logger">
+            
+              <b>logger</b>()
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-logger" name="method-i-logger" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Access shared logger object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-logger_source')" id="l_method-i-logger_source">show</a>
+                
+              </p>
+              <div id="method-i-logger_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 302</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">logger</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">logger</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mime_type">
+            
+              <b>mime_type</b>(type)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-mime_type" name="method-i-mime_type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Look up a media type by file extension in Rack&#39;s mime registry.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mime_type_source')" id="l_method-i-mime_type_source">show</a>
+                
+              </p>
+              <div id="method-i-mime_type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 307</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mime_type</span>(<span class="ruby-identifier">type</span>)
+  <span class="ruby-constant">Base</span>.<span class="ruby-identifier">mime_type</span>(<span class="ruby-identifier">type</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-not_found">
+            
+              <b>not_found</b>(body = nil)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-not_found" name="method-i-not_found" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Halt processing and return a 404 Not Found.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-not_found_source')" id="l_method-i-not_found_source">show</a>
+                
+              </p>
+              <div id="method-i-not_found_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 286</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">not_found</span>(<span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">error</span> <span class="ruby-number">404</span>, <span class="ruby-identifier">body</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-redirect">
+            
+              <b>redirect</b>(uri, *args)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-redirect" name="method-i-redirect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Halt processing and redirect to the URI provided.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-redirect_source')" id="l_method-i-redirect_source">show</a>
+                
+              </p>
+              <div id="method-i-redirect_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 244</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">redirect</span>(<span class="ruby-identifier">uri</span>, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&#39;HTTP_VERSION&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;HTTP/1.1&#39;</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;REQUEST_METHOD&quot;</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;GET&#39;</span>
+    <span class="ruby-identifier">status</span> <span class="ruby-number">303</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">status</span> <span class="ruby-number">302</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># According to RFC 2616 section 14.30, &quot;the field value consists of a</span>
+  <span class="ruby-comment"># single absolute URI&quot;</span>
+  <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Location&#39;</span>] = <span class="ruby-identifier">uri</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">absolute_redirects?</span>, <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">prefixed_redirects?</span>)
+  <span class="ruby-identifier">halt</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-send_file">
+            
+              <b>send_file</b>(path, opts = {})
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-send_file" name="method-i-send_file" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Use the contents of the file at <code>path</code> as the response body.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-send_file_source')" id="l_method-i-send_file_source">show</a>
+                
+              </p>
+              <div id="method-i-send_file_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 346</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">send_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:type</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;Content-Type&#39;</span>]
+    <span class="ruby-identifier">content_type</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:type</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">path</span>), <span class="ruby-value">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;application/octet-stream&#39;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">disposition</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:disposition</span>]
+  <span class="ruby-identifier">filename</span>    = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:filename</span>]
+  <span class="ruby-identifier">disposition</span> = <span class="ruby-string">&#39;attachment&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">disposition</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filename</span>
+  <span class="ruby-identifier">filename</span>    = <span class="ruby-identifier">path</span>         <span class="ruby-keyword">if</span> <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">attachment</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">disposition</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">disposition</span>
+
+  <span class="ruby-identifier">last_modified</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:last_modified</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:last_modified</span>]
+
+  <span class="ruby-identifier">file</span>      = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>
+  <span class="ruby-identifier">result</span>    = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">serving</span> <span class="ruby-identifier">env</span>
+  <span class="ruby-identifier">result</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">headers</span>[<span class="ruby-identifier">k</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">v</span> }
+  <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;Content-Length&#39;</span>] = <span class="ruby-identifier">result</span>[<span class="ruby-number">1</span>][<span class="ruby-string">&#39;Content-Length&#39;</span>]
+  <span class="ruby-identifier">halt</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:status</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">result</span>[<span class="ruby-number">0</span>], <span class="ruby-identifier">result</span>[<span class="ruby-number">2</span>]
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
+  <span class="ruby-identifier">not_found</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-session">
+            
+              <b>session</b>()
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-session" name="method-i-session" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Access the underlying <a href="../Rack.html">Rack</a> session.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-session_source')" id="l_method-i-session_source">show</a>
+                
+              </p>
+              <div id="method-i-session_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 297</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">session</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">session</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-status">
+            
+              <b>status</b>(value = nil)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-status" name="method-i-status" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set or retrieve the response status code.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-status_source')" id="l_method-i-status_source">show</a>
+                
+              </p>
+              <div id="method-i-status_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">status</span>(<span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to">
+            
+              <b>to</b>(addr = nil, absolute = true, add_script_name = true)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-to" name="method-i-to" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-uri">
+            
+              <b>uri</b>(addr = nil, absolute = true, add_script_name = true)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-uri" name="method-i-uri" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Generates the absolute URI for a given path in the app. Takes <a
+href="../Rack.html">Rack</a> routers and reverse proxies into account.</p>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Helpers.html#method-i-url">url</a>, <a href="Helpers.html#method-i-to">to</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-uri_source')" id="l_method-i-uri_source">show</a>
+                
+              </p>
+              <div id="method-i-uri_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 259</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">uri</span>(<span class="ruby-identifier">addr</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">absolute</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">add_script_name</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">addr</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">addr</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A[A-z][A-z0-9\+\.\-]*:/</span>
+  <span class="ruby-identifier">uri</span> = [<span class="ruby-identifier">host</span> = <span class="ruby-string">&quot;&quot;</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">absolute</span>
+    <span class="ruby-identifier">host</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;http#{&#39;s&#39; if request.secure?}://&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">forwarded?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> (<span class="ruby-identifier">request</span>.<span class="ruby-identifier">secure?</span> <span class="ruby-operator">?</span> <span class="ruby-number">443</span> <span class="ruby-operator">:</span> <span class="ruby-number">80</span>)
+      <span class="ruby-identifier">host</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host_with_port</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">host</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">script_name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">add_script_name</span>
+  <span class="ruby-identifier">uri</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">addr</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">addr</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">path_info</span>).<span class="ruby-identifier">to_s</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">uri</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-url">
+            
+              <b>url</b>(addr = nil, absolute = true, add_script_name = true)
+            
+            <a href="../../classes/Sinatra/Helpers.html#method-i-url" name="method-i-url" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

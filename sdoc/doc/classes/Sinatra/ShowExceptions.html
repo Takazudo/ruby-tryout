@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Sinatra::ShowExceptions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Sinatra::ShowExceptions 
+            
+                <span class="parent">&lt; 
+                    
+                    Rack::ShowExceptions
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/sinatra/showexceptions_rb.html">test/sinatra/showexceptions.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="ShowExceptions.html">Sinatra::ShowExceptions</a> catches all
+exceptions raised from the app it wraps. It shows a useful backtrace with
+the sourcefile and clickable context, the whole <a
+href="../Rack.html">Rack</a> environment and the request data.</p>
+
+<p>Be careful when you use this on public-facing sites as it could reveal
+information helpful to attackers.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">TEMPLATE</td>
+            <td>=</td>
+            <td class="attr-value">&lt;&lt;-HTML # :nodoc:
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+&lt;title&gt;&lt;%=h exception.class %&gt; at &lt;%=h path %&gt;&lt;/title&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;!--
+function toggle(id) {
+var pre  = document.getElementById(&quot;pre-&quot; + id);
+var post = document.getElementById(&quot;post-&quot; + id);
+var context = document.getElementById(&quot;context-&quot; + id);
+
+if (pre.style.display == &#39;block&#39;) {
+pre.style.display = &#39;none&#39;;
+post.style.display = &#39;none&#39;;
+context.style.background = &quot;none&quot;;
+} else {
+pre.style.display = &#39;block&#39;;
+post.style.display = &#39;block&#39;;
+context.style.background = &quot;#fffed9&quot;;
+}
+}
+
+function toggleBacktrace(){
+var bt = document.getElementById(&quot;backtrace&quot;);
+var toggler = document.getElementById(&quot;expando&quot;);
+
+if (bt.className == &#39;condensed&#39;) {
+bt.className = &#39;expanded&#39;;
+toggler.innerHTML = &quot;(condense)&quot;;
+} else {
+bt.className = &#39;condensed&#39;;
+toggler.innerHTML = &quot;(expand)&quot;;
+}
+}
+//--&gt;
+&lt;/script&gt;
+
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+*                   {margin: 0; padding: 0; border: 0; outline: 0;}
+div.clear           {clear: both;}
+body                {background: #EEEEEE; margin: 0; padding: 0;
+font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;,
+&#39;Garuda&#39;;}
+code                {font-family: &#39;Lucida Console&#39;, monospace;
+font-size: 12px;}
+li                  {height: 18px;}
+ul                  {list-style: none; margin: 0; padding: 0;}
+ol:hover            {cursor: pointer;}
+ol li               {white-space: pre;}
+#explanation        {font-size: 12px; color: #666666;
+margin: 20px 0 0 100px;}
+/* WRAP */
+#wrap               {width: 1000px; background: #FFFFFF; margin: 0 auto;
+padding: 30px 50px 20px 50px;
+border-left: 1px solid #DDDDDD;
+border-right: 1px solid #DDDDDD;}
+/* HEADER */
+#header             {margin: 0 auto 25px auto;}
+#header img         {float: left;}
+#header #summary    {float: left; margin: 12px 0 0 20px; width:660px;
+font-family: &#39;Lucida Grande&#39;, &#39;Lucida Sans Unicode&#39;;}
+h1                  {margin: 0; font-size: 36px; color: #981919;}
+h2                  {margin: 0; font-size: 22px; color: #333333;}
+#header ul          {margin: 0; font-size: 12px; color: #666666;}
+#header ul li strong{color: #444444;}
+#header ul li       {display: inline; padding: 0 10px;}
+#header ul li.first {padding-left: 0;}
+#header ul li.last  {border: 0; padding-right: 0;}
+/* BODY */
+#backtrace,
+#get,
+#post,
+#cookies,
+#rack               {width: 980px; margin: 0 auto 10px auto;}
+p#nav               {float: right; font-size: 14px;}
+/* BACKTRACE */
+a#expando           {float: left; padding-left: 5px; color: #666666;
+font-size: 14px; text-decoration: none; cursor: pointer;}
+a#expando:hover     {text-decoration: underline;}
+h3                  {float: left; width: 100px; margin-bottom: 10px;
+color: #981919; font-size: 14px; font-weight: bold;}
+#nav a              {color: #666666; text-decoration: none; padding: 0 5px;}
+#backtrace li.frame-info {background: #f7f7f7; padding-left: 10px;
+font-size: 12px; color: #333333;}
+#backtrace ul       {list-style-position: outside; border: 1px solid #E9E9E9;
+border-bottom: 0;}
+#backtrace ol       {width: 920px; margin-left: 50px;
+font: 10px &#39;Lucida Console&#39;, monospace; color: #666666;}
+#backtrace ol li    {border: 0; border-left: 1px solid #E9E9E9;
+padding: 2px 0;}
+#backtrace ol code  {font-size: 10px; color: #555555; padding-left: 5px;}
+#backtrace-ul li    {border-bottom: 1px solid #E9E9E9; height: auto;
+padding: 3px 0;}
+#backtrace-ul .code {padding: 6px 0 4px 0;}
+#backtrace.condensed .system,
+#backtrace.condensed .framework {display:none;}
+/* REQUEST DATA */
+p.no-data           {padding-top: 2px; font-size: 12px; color: #666666;}
+table.req           {width: 980px; text-align: left; font-size: 12px;
+color: #666666; padding: 0; border-spacing: 0;
+border: 1px solid #EEEEEE; border-bottom: 0;
+border-left: 0;
+clear:both}
+table.req tr th     {padding: 2px 10px; font-weight: bold;
+background: #F7F7F7; border-bottom: 1px solid #EEEEEE;
+border-left: 1px solid #EEEEEE;}
+table.req tr td     {padding: 2px 20px 2px 10px;
+border-bottom: 1px solid #EEEEEE;
+border-left: 1px solid #EEEEEE;}
+/* HIDE PRE/POST CODE AT START */
+.pre-context,
+.post-context       {display: none;}
+
+table td.code       {width:750px}
+table td.code div   {width:750px;overflow:hidden}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+&lt;div id=&quot;header&quot;&gt;
+&lt;img src=&quot;&lt;%= env[&#39;SCRIPT_NAME&#39;] %&gt;/__sinatra__/500.png&quot; alt=&quot;application error&quot; height=&quot;161&quot; width=&quot;313&quot; /&gt;
+&lt;div id=&quot;summary&quot;&gt;
+&lt;h1&gt;&lt;strong&gt;&lt;%=h exception.class %&gt;&lt;/strong&gt; at &lt;strong&gt;&lt;%=h path %&gt;
+&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2&gt;&lt;%=h exception.message %&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li class=&quot;first&quot;&gt;&lt;strong&gt;file:&lt;/strong&gt; &lt;code&gt;
+&lt;%=h frames.first.filename.split(&quot;/&quot;).last %&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;location:&lt;/strong&gt; &lt;code&gt;&lt;%=h frames.first.function %&gt;
+&lt;/code&gt;&lt;/li&gt;
+&lt;li class=&quot;last&quot;&gt;&lt;strong&gt;line:
+&lt;/strong&gt; &lt;%=h frames.first.lineno %&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;backtrace&quot; class=&#39;condensed&#39;&gt;
+&lt;h3&gt;BACKTRACE&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot; id=&quot;expando&quot;
+onclick=&quot;toggleBacktrace(); return false&quot;&gt;(expand)&lt;/a&gt;&lt;/p&gt;
+&lt;p id=&quot;nav&quot;&gt;&lt;strong&gt;JUMP TO:&lt;/strong&gt;
+&lt;a href=&quot;#get-info&quot;&gt;GET&lt;/a&gt;
+&lt;a href=&quot;#post-info&quot;&gt;POST&lt;/a&gt;
+&lt;a href=&quot;#cookie-info&quot;&gt;COOKIES&lt;/a&gt;
+&lt;a href=&quot;#env-info&quot;&gt;ENV&lt;/a&gt;
+&lt;/p&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+
+&lt;ul id=&quot;backtrace-ul&quot;&gt;
+
+&lt;% id = 1 %&gt;
+&lt;% frames.each do |frame| %&gt;
+&lt;% if frame.context_line &amp;&amp; frame.context_line != &quot;#&quot; %&gt;
+
+&lt;li class=&quot;frame-info &lt;%= frame_class(frame) %&gt;&quot;&gt;
+&lt;code&gt;&lt;%=h frame.filename %&gt;&lt;/code&gt; in
+&lt;code&gt;&lt;strong&gt;&lt;%=h frame.function %&gt;&lt;/strong&gt;&lt;/code&gt;
+&lt;/li&gt;
+
+&lt;li class=&quot;code &lt;%= frame_class(frame) %&gt;&quot;&gt;
+&lt;% if frame.pre_context %&gt;
+&lt;ol start=&quot;&lt;%=h frame.pre_context_lineno + 1 %&gt;&quot;
+class=&quot;pre-context&quot; id=&quot;pre-&lt;%= id %&gt;&quot;
+onclick=&quot;toggle(&lt;%= id %&gt;);&quot;&gt;
+&lt;% frame.pre_context.each do |line| %&gt;
+&lt;li class=&quot;pre-context-line&quot;&gt;&lt;code&gt;&lt;%=h line %&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;% end %&gt;
+&lt;/ol&gt;
+&lt;% end %&gt;
+
+&lt;ol start=&quot;&lt;%= frame.lineno %&gt;&quot; class=&quot;context&quot; id=&quot;&lt;%= id %&gt;&quot;
+onclick=&quot;toggle(&lt;%= id %&gt;);&quot;&gt;
+&lt;li class=&quot;context-line&quot; id=&quot;context-&lt;%= id %&gt;&quot;&gt;&lt;code&gt;&lt;%=
+h frame.context_line %&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;% if frame.post_context %&gt;
+&lt;ol start=&quot;&lt;%=h frame.lineno + 1 %&gt;&quot; class=&quot;post-context&quot;
+id=&quot;post-&lt;%= id %&gt;&quot; onclick=&quot;toggle(&lt;%= id %&gt;);&quot;&gt;
+&lt;% frame.post_context.each do |line| %&gt;
+&lt;li class=&quot;post-context-line&quot;&gt;&lt;code&gt;&lt;%=h line %&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;% end %&gt;
+&lt;/ol&gt;
+&lt;% end %&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/li&gt;
+
+&lt;% end %&gt;
+
+&lt;% id += 1 %&gt;
+&lt;% end %&gt;
+
+&lt;/ul&gt;
+&lt;/div&gt; &lt;!-- /BACKTRACE --&gt;
+
+&lt;div id=&quot;get&quot;&gt;
+&lt;h3 id=&quot;get-info&quot;&gt;GET&lt;/h3&gt;
+&lt;% if req.GET and not req.GET.empty? %&gt;
+&lt;table class=&quot;req&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;% req.GET.sort_by { |k, v| k.to_s }.each { |key, val| %&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;%=h key %&gt;&lt;/td&gt;
+&lt;td class=&quot;code&quot;&gt;&lt;div&gt;&lt;%=h val.inspect %&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;% } %&gt;
+&lt;/table&gt;
+&lt;% else %&gt;
+&lt;p class=&quot;no-data&quot;&gt;No GET data.&lt;/p&gt;
+&lt;% end %&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt; &lt;!-- /GET --&gt;
+
+&lt;div id=&quot;post&quot;&gt;
+&lt;h3 id=&quot;post-info&quot;&gt;POST&lt;/h3&gt;
+&lt;% if req.POST and not req.POST.empty? %&gt;
+&lt;table class=&quot;req&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;% req.POST.sort_by { |k, v| k.to_s }.each { |key, val| %&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;%=h key %&gt;&lt;/td&gt;
+&lt;td class=&quot;code&quot;&gt;&lt;div&gt;&lt;%=h val.inspect %&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;% } %&gt;
+&lt;/table&gt;
+&lt;% else %&gt;
+&lt;p class=&quot;no-data&quot;&gt;No POST data.&lt;/p&gt;
+&lt;% end %&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt; &lt;!-- /POST --&gt;
+
+&lt;div id=&quot;cookies&quot;&gt;
+&lt;h3 id=&quot;cookie-info&quot;&gt;COOKIES&lt;/h3&gt;
+&lt;% unless req.cookies.empty? %&gt;
+&lt;table class=&quot;req&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;% req.cookies.each { |key, val| %&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;%=h key %&gt;&lt;/td&gt;
+&lt;td class=&quot;code&quot;&gt;&lt;div&gt;&lt;%=h val.inspect %&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;% } %&gt;
+&lt;/table&gt;
+&lt;% else %&gt;
+&lt;p class=&quot;no-data&quot;&gt;No cookie data.&lt;/p&gt;
+&lt;% end %&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt; &lt;!-- /COOKIES --&gt;
+
+&lt;div id=&quot;rack&quot;&gt;
+&lt;h3 id=&quot;env-info&quot;&gt;Rack ENV&lt;/h3&gt;
+&lt;table class=&quot;req&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;% env.sort_by { |k, v| k.to_s }.each { |key, val| %&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;%=h key %&gt;&lt;/td&gt;
+&lt;td class=&quot;code&quot;&gt;&lt;div&gt;&lt;%=h val %&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;% } %&gt;
+&lt;/table&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+&lt;/div&gt; &lt;!-- /RACK ENV --&gt;
+
+&lt;p id=&quot;explanation&quot;&gt;You&#39;re seeing this error because you have
+enabled the &lt;code&gt;show_exceptions&lt;/code&gt; setting.&lt;/p&gt;
+&lt;/div&gt; &lt;!-- /WRAP --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+HTML</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(app)
+            
+            <a href="../../classes/Sinatra/ShowExceptions.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/showexceptions.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
+  <span class="ruby-ivar">@app</span>      = <span class="ruby-identifier">app</span>
+  <span class="ruby-ivar">@template</span> = <span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TEMPLATE</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
+            
+              <b>call</b>(env)
+            
+            <a href="../../classes/Sinatra/ShowExceptions.html#method-i-call" name="method-i-call" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
+                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/showexceptions.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">call</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">errors</span>, <span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;rack.errors&quot;</span>] = <span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;rack.errors&quot;</span>], <span class="ruby-identifier">@@eats_errors</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">prefers_plain_text?</span>(<span class="ruby-identifier">env</span>)
+    <span class="ruby-identifier">content_type</span> = <span class="ruby-string">&quot;text/plain&quot;</span>
+    <span class="ruby-identifier">body</span> = [<span class="ruby-identifier">dump_exception</span>(<span class="ruby-identifier">e</span>)]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">content_type</span> = <span class="ruby-string">&quot;text/html&quot;</span>
+    <span class="ruby-identifier">body</span> = <span class="ruby-identifier">pretty</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">e</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;rack.errors&quot;</span>] = <span class="ruby-identifier">errors</span>
+
+  [<span class="ruby-number">500</span>,
+   {<span class="ruby-string">&quot;Content-Type&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">content_type</span>,
+    <span class="ruby-string">&quot;Content-Length&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">bytesize</span>(<span class="ruby-identifier">body</span>.<span class="ruby-identifier">join</span>).<span class="ruby-identifier">to_s</span>},
+   <span class="ruby-identifier">body</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Sinatra::Helpers::Stream::Base</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Sinatra::Helpers::Stream::Base 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/test/sinatra/base_rb.html">test/sinatra/base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Base.html">Base</a> class for all <a
+href="../../../Sinatra.html">Sinatra</a> applications and middleware.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-forward">forward</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-halt">halt</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-options">options</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pass">pass</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-settings">settings</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-settings">settings</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            Rack::Utils
+          
+        </li>
+      
+        <li>
+          
+            <a href="../../Helpers.html">
+              Sinatra::Helpers
+            </a>
+          
+        </li>
+      
+        <li>
+          
+            <a href="Templates.html">
+              Sinatra::Helpers::Stream::Templates
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">URI</td>
+            <td>=</td>
+            <td class="attr-value">::URI.const_defined?(:Parser) ? ::URI::Parser.new : ::URI</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CALLERS_TO_IGNORE</td>
+            <td>=</td>
+            <td class="attr-value">[ # :nodoc:
+/\/sinatra(\/(base|main|showexceptions))?\.rb$/,    # all sinatra code
+/lib\/tilt.*\.rb$/,                                 # all tilt code
+/^\(.*\)$/,                                         # generated code
+/rubygems\/(custom|core_ext\/kernel)_require\.rb$/, # rubygems require hacks
+/active_support/,                                   # active_support require hacks
+/bundler(\/runtime)?\.rb/,                          # bundler require hacks
+/&lt;internal:/,                                       # internal in ruby &gt;= 1.9.2
+/src\/kernel\/bootstrap\/[A-Z]/                     # maglev kernel files
+]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>app</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>env</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>params</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>request</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>response</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>template_cache</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(app = nil)
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Base.html#method-c-new-21">new!</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 861</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">app</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">super</span>()
+  <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+  <span class="ruby-ivar">@template_cache</span> = <span class="ruby-constant">Tilt</span><span class="ruby-operator">::</span><span class="ruby-constant">Cache</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-settings">
+            
+              <b>settings</b>()
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-c-settings" name="method-c-settings" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Access settings defined with Base.set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-settings_source')" id="l_method-c-settings_source">show</a>
+                
+              </p>
+              <div id="method-c-settings_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 897</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">settings</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
+            
+              <b>call</b>(env)
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-call" name="method-i-call" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p><a href="../../../Rack.html">Rack</a> call interface.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
+                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 869</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">call</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">call!</span>(<span class="ruby-identifier">env</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-forward">
+            
+              <b>forward</b>()
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-forward" name="method-i-forward" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Forward the request to the downstream app – middleware only.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-forward_source')" id="l_method-i-forward_source">show</a>
+                
+              </p>
+              <div id="method-i-forward_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 927</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">forward</span>
+  <span class="ruby-identifier">fail</span> <span class="ruby-string">&quot;downstream app not set&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:call</span>
+  <span class="ruby-identifier">status</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">body</span> = <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">status</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">body</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">headers</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">headers</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-halt">
+            
+              <b>halt</b>(*response)
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-halt" name="method-i-halt" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Exit the current block, halts any further processing of the request, and
+returns the specified response.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-halt_source')" id="l_method-i-halt_source">show</a>
+                
+              </p>
+              <div id="method-i-halt_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 914</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">halt</span>(*<span class="ruby-identifier">response</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-number">1</span>
+  <span class="ruby-identifier">throw</span> <span class="ruby-value">:halt</span>, <span class="ruby-identifier">response</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-options">
+            
+              <b>options</b>()
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-options" name="method-i-options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-options_source')" id="l_method-i-options_source">show</a>
+                
+              </p>
+              <div id="method-i-options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 906</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">options</span>
+  <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Sinatra::Base#options is deprecated and will be removed, &quot;</span>          <span class="ruby-node">&quot;use #settings instead.&quot;</span>
+  <span class="ruby-identifier">settings</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pass">
+            
+              <b>pass</b>(&amp;block)
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-pass" name="method-i-pass" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Pass control to the next matching route. If there are no more matching
+routes, <a href="../../../Sinatra.html">Sinatra</a> will return a 404
+response.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pass_source')" id="l_method-i-pass_source">show</a>
+                
+              </p>
+              <div id="method-i-pass_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 922</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pass</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">throw</span> <span class="ruby-value">:pass</span>, <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-settings">
+            
+              <b>settings</b>()
+            
+            <a href="../../../../classes/Sinatra/Helpers/Stream/Base.html#method-i-settings" name="method-i-settings" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Access settings defined with Base.set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-settings_source')" id="l_method-i-settings_source">show</a>
+                
+              </p>
+              <div id="method-i-settings_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File test/sinatra/base.rb, line 902</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">settings</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">settings</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    
