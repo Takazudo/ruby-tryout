@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require
 
-Groonga::Context.default_options = {:encoding => :utf8}
+Groonga::Context.default_options = { encoding: :utf8 }
 
 module GrManager
 
@@ -25,8 +25,9 @@ module GrManager
     Dir.glob('*').each do |file|
       File.delete file
     end
+    # return to my directory because current dir will be removed.
+    Dir.chdir(File.dirname(__FILE__))
     Dir.rmdir @db_dir
-    true
   end
 
   class EntryTable
@@ -41,12 +42,55 @@ module GrManager
       end
     end
 
+    def add entry_id, data
+      data[:timestamp] = Time.now
+      id = entry_id.to_s
+      if record_exist id
+        return false
+      end
+      @table_raw.add id, data
+      true
+    end
+
+    def record_exist entry_id
+      id = entry_id.to_s
+      (@table_raw.has_key? id) ? true : false
+    end
+  
+    def size
+      @table_raw.size
+    end
+
+    def find_by_id entry_id
+      id = entry_id.to_s
+      @table_raw[id] or nil
+    end
+
+    def update_record entry_id, data
+      record = find_by_id entry_id
+      if record.nil?
+        return false
+      end
+      record.title = data[:title]
+      record.body = data[:body]
+      record.timestamp = Time.now
+      true
+    end
+
+    def delete entry_id
+      id = entry_id.to_s
+      record = find_by_id id
+      if record.nil?
+        return false
+      end
+      record.delete
+      true
+    end
+
     private 
 
     def create_table
-      options = {
-        :type => :hash
-      }
+      options = { type: :hash }
       Groonga::Schema.create_table('entries', options) do |table|
         table.short_text 'title'
         table.text 'body'
