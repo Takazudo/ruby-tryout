@@ -61,6 +61,24 @@ describe GrManager do
       end
 
     end
+    
+    describe "TermTable" do
+
+      it "should create TermTable" do
+        table_entry = GrManager::EntryTable.new
+        table_term = GrManager::TermTable.new
+        (expect table_entry.table_raw.class).to be Groonga::Hash
+        (expect table_term.table_raw.class).to be Array
+      end
+
+      it "should use existing table on 2nd createion" do
+        table_entry = GrManager::EntryTable.new
+        table_term1 = GrManager::TermTable.new
+        table_term2 = GrManager::TermTable.new
+        (expect table_term1.table_raw).to be table_term1.table_raw
+      end
+
+    end
 
     describe "add" do
 
@@ -156,6 +174,39 @@ describe GrManager do
         (expect res).to be false
       end
 
+    end
+
+    #describe "search" do
+    #  
+    #  it "should return search results" do
+    #    table_entry = GrManager::EntryTable.new
+    #    table_term = GrManager::TermTable.new
+    #    table_entry.add 1, { title: 'title1', body: 'body1 is good', }
+    #    table_entry.add 2, { title: 'title2', body: 'body2 is bad', }
+    #    table_entry.add 3, { title: 'title3', body: 'body3 is good', }
+    #    res = table_entry.search 'body1 good'
+    #    pp res
+    #  end
+
+    #end
+
+  end
+
+  describe "searching" do
+
+    before :each do
+      GrManager.setup @db_path, @db_filename
+      @table = GrManager::EntryTable.new
+      @table_term = GrManager::TermTable.new
+    end
+    after :each do
+      GrManager.destroy
+    end
+
+    it "returns keywords in the result" do
+      @table.add 1, { title: 'OMG banana title', body: 'banana is good', }
+      res = @table.search 'good'
+      pp res
     end
 
   end

@@ -30,6 +30,37 @@ module GrManager
     Dir.rmdir @db_dir
   end
 
+  class TermTable
+    attr_accessor :table_raw
+
+    @@table_name = 'terms'
+    
+    def initialize
+      @table_raw = Groonga[@@table_name]
+      unless @table_raw
+        @table_raw = create_table
+      end
+    end
+
+    private
+
+    def create_table
+      options = {
+        :type => :patricia_trie,
+        :normalizer => :NormalizerAuto,
+        :default_tokenizer => 'TokenBigram'
+      }
+      Groonga::Schema.create_table(@@table_name, options) do |table|
+        table.index 'entries.title'
+        table.index 'entries.body'
+      end
+    end
+  end
+
+  class SearchResult
+    
+  end
+
   class EntryTable
     attr_accessor :table_raw
 
@@ -87,6 +118,14 @@ module GrManager
       true
     end
 
+    def search keywords
+      ret = {}
+      ret[:keywords] = keywords
+      results = exec_rroonga_search keywords
+      ret[:results] = normalize_rroonga_search_results results
+      ret
+    end
+
     private 
 
     def create_table
@@ -99,7 +138,93 @@ module GrManager
       Groonga[@@table_name]
     end
 
+    def exec_rroonga_search keywords
+      # split by space
+      words = keywords.split
+
+      # refered:
+      # http://ranguba.org/rroonga/en/Groonga/Table.html#select-instance_method
+      # http://magazine.rubyist.net/?0031-RuremaSearch
+      # http://www.clear-code.com/blog/2009/7/31.html
+      
+      # iterate for each records
+      results = @table_raw.select do |record|
+        expression = nil # result for this record
+        words.each do |word|
+          sub_expression = nil
+          # create target expression object
+          target = record.match_target do |match_record|
+            (match_record.title * 100) | match_record.body
+          end
+          # then do the searching
+          sub_expression = target =~ word
+          # add for next word
+          if expression
+            expression &= sub_expression
+          else
+            expression = sub_expression
+          end
+        end
+        expression
+      end
+
+      results
+    end
+
+    def normalize_rroonga_search_results rroonga_serach_results
+
+      ret = []
+
+      # create snippets
+      # http://ranguba.org/rroonga/en/Groonga/Expression.html#snippet-instance_method
+      tags = [['<em class="matched">', '</em>']]
+      snippet = rroonga_serach_results.expression.snippet(tags)
+
+      rroonga_serach_results.each do |record|
+
+        # KOKOKARA
+
+        current = {}
+
+        # 1. `record` is a object which contains search result info.
+        # For example, { score: 1 }
+        # 2. `record.key` is the object which was matched with search expression.
+        # For example, { title: 'title1!', body: 'body1!' }
+        # 3. `record.key.key` is the key of 2.
+        # For example, 1.
+        #
+        # Then, following code works to get the entry_id of the searched result.
+        current[:entry_id] = record.key.key
+
+        # tagged title
+        title = nil
+        snippet.execute(record[:title]).each do |snippet|
+          title = snippet
+        end
+        if title.nil?
+          title = record[:title]
+        end
+        current[:title] = title
+
+        # tagged body
+        body = []
+        snippet.execute(record[:body]).each do |snippet|
+          body.push "#{snippet}..."
+        end
+        if body.empty?
+          body.push record[:body]
+        end
+        current[:body] = body
+
+        ret.push current
+
+      end
+
+      ret
+
+    end
+
   end
-  
+
 end
 
