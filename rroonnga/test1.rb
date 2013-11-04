@@ -122,7 +122,8 @@ module GrManager
       ret = {}
       ret[:keywords] = keywords
       results = exec_rroonga_search keywords
-      ret[:results] = normalize_rroonga_search_results results
+      results = normalize_rroonga_search_results results
+      ret[:results] = results
       ret
     end
 
@@ -194,7 +195,7 @@ module GrManager
         # For example, 1.
         #
         # Then, following code works to get the entry_id of the searched result.
-        current[:entry_id] = record.key.key
+        current[:entry_id] = record.key.key.to_i
 
         # tagged title
         title = nil

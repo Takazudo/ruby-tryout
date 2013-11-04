@@ -92,7 +92,7 @@ describe GrManager do
         (expect table.size).to be 2
       end
       
-      it "should detect record existing" do
+      it "should detect record exsistance" do
         table = GrManager::EntryTable.new
         data1 = { title: 'title1!', body: 'body1!', }
         table.add 1, data1
@@ -192,21 +192,115 @@ describe GrManager do
 
   end
 
-  describe "searching" do
+  describe "searching1" do
 
-    before :each do
+    before :all do
       GrManager.setup @db_path, @db_filename
       @table = GrManager::EntryTable.new
       @table_term = GrManager::TermTable.new
+      @table.add 1, { title: 'OMG banana title', body: 'banana is good', }
+      @search_res = @table.search 'good'
+      #pp @search_res
     end
-    after :each do
+    after :all do
       GrManager.destroy
     end
 
-    it "returns keywords in the result" do
+    it "returns the search keyword" do
+      (expect @search_res[:keywords]).to eq 'good'
+    end
+
+    it "returns the results as array" do
+      (expect @search_res[:results].length).to be 1
+    end
+
+    it "has a valid result entry" do
+      item = @search_res[:results][0]
+      (expect item[:entry_id]).to be 1
+    end
+
+    it "has the keyword highlighted result" do
+      matched_body = @search_res[:results][0][:body]
+      regExpRes= /<em class=/i.match matched_body[0]
+      (expect regExpRes).not_to be nil
+    end
+
+  end
+
+  describe "searching2" do
+
+    before :all do
+      GrManager.setup @db_path, @db_filename
+      @table = GrManager::EntryTable.new
+      @table_term = GrManager::TermTable.new
+      body = <<BODY
+        banana is good
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        banana is good
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        banana is good
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+        OMG OMG OMG OMG OMG OMG
+BODY
+      @table.add 1, { title: 'OMG banana title', body: body, }
+      @search_res = @table.search 'good'
+    end
+    after :all do
+      GrManager.destroy
+    end
+
+    it "returns the result which has 3 length array as body" do
+      matched_body = @search_res[:results][0][:body]
+      (expect matched_body.length).to be 3
+    end
+
+    it "has the result which has correctly snipped body" do
+      matched_body = @search_res[:results][0][:body]
+      matched_body.each do |str|
+        regExpRes= /<em class=/i.match str
+        (expect regExpRes).not_to be nil
+      end
+    end
+
+  end
+
+  describe "searching3" do
+
+    before :all do
+      GrManager.setup @db_path, @db_filename
+      @table = GrManager::EntryTable.new
+      @table_term = GrManager::TermTable.new
       @table.add 1, { title: 'OMG banana title', body: 'banana is good', }
-      res = @table.search 'good'
-      pp res
+      @table.add 2, { title: 'OMG banana title', body: 'banana is cheap', }
+      @table.add 3, { title: 'OMG banana title', body: 'banana is good', }
+      @table.add 4, { title: 'OMG banana title', body: 'banana is pretty', }
+      @table.add 5, { title: 'OMG banana title', body: 'banana is good', }
+      @table.add 6, { title: 'OMG banana title', body: 'banana is happy', }
+      @search_res = @table.search 'good'
+    end
+    after :all do
+      GrManager.destroy
+    end
+
+    it "returns the results as array" do
+      (expect @search_res[:results].length).to be 3
     end
 
   end
