@@ -176,23 +176,9 @@ describe GrManager do
 
     end
 
-    #describe "search" do
-    #  
-    #  it "should return search results" do
-    #    table_entry = GrManager::EntryTable.new
-    #    table_term = GrManager::TermTable.new
-    #    table_entry.add 1, { title: 'title1', body: 'body1 is good', }
-    #    table_entry.add 2, { title: 'title2', body: 'body2 is bad', }
-    #    table_entry.add 3, { title: 'title3', body: 'body3 is good', }
-    #    res = table_entry.search 'body1 good'
-    #    pp res
-    #  end
-
-    #end
-
   end
 
-  describe "searching1" do
+  describe "searching - very basic" do
 
     before :all do
       GrManager.setup @db_path, @db_filename
@@ -227,7 +213,7 @@ describe GrManager do
 
   end
 
-  describe "searching2" do
+  describe "searching - multiple snipped in one entry" do
 
     before :all do
       GrManager.setup @db_path, @db_filename
@@ -281,7 +267,7 @@ BODY
 
   end
 
-  describe "searching3" do
+  describe "searching - multiple results" do
 
     before :all do
       GrManager.setup @db_path, @db_filename
