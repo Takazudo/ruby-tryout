@@ -286,6 +286,7 @@ BODY
     end
 
     it "returns the results as array" do
+      # pp @search_res
       (expect @search_res[:results].length).to be 3
     end
 
